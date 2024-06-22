@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    user-select: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.top a {
+    font-size: 18px;
+    padding: 6px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #fff;
+}
+
+.top a:hover {
+    font-size: 22px;
+}
+
+.main {
+    width: 450px;
+    padding: 25px;
+    text-align: right;
+    color: #f7f7f7eb;
+    letter-spacing: 1px;
+    z-index: 9999;
+    font-size: 13px;
+}
+
+.small {
+    color: #e8e8e899;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.small:hover {
+    color: #ffffff;
+}
+
+.divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 20px;
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    background-color: #fff;
+    color: #fff;
+}
+
+.after {
+    display: none;
+}
+
+.before {
+    text-align: center;
+    color: #fff;
+    user-select: none;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+p[style] a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p[style] a:hover {
+    color: #ff8800;
+}
+
+.divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 20px;
+}
+
+.visualizer {
+    flex: 1;
+    height: 4px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background-color: #ffffff;
+}

@@ -1,0 +1,98 @@
+<!-- Y3N5bjwz -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>/projects</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta name="theme-color" content="#0x000f">
+<meta property="og:url" content="https://csyn.me" />
+<meta property="og:title" content="csyn.me" />
+<meta property="og:image" content="https://csyn.me/assets/reversexenowo.png" />
+<meta property="og:description" content="@cosmin" />
+<link rel="shortcut icon" type="image/png" href="https://csyn.me/assets/fraudstar.png">
+<link rel="stylesheet" href="css/proj.css">
+<link rel="stylesheet" href="css/particles.css">
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #000;
+    font-size: large;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+a:link, a:visited, a:active {
+    color: #aab4ff;
+}
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+.project-item {
+    margin: 10px;
+}
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #787879;
+    color: #fff !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.back-button:hover {
+    background-color: #000;
+    color: #fff !important;
+    text-decoration: none;
+}
+@media (max-width: 600px) {
+    body {
+        font-size: medium;
+    }
+}
+</style>
+</head>
+<body>
+<div class="page-bg"></div>
+<div class="animation-wrapper">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+</div>
+<div class="projects-container">
+    <pre><samp>
+projects:
+    </samp></pre>
+    <div class="project-item">
+        - <a href="https://csyn.me">csyn.me</a> <span class="project-desc">my website - i host stuff here</span>
+    </div>
+    <div class="project-item">
+        - <a href="https://heist.csyn.me">heist.csyn.me</a> <span class="project-desc">heist - multipurpose &amp utility userapp (discord)</span>
+    </div>
+    <div class="project-item">
+        - <a href="https://versity.csyn.me">versity.csyn.me</a> <span class="project-desc">versity - vanity role rewards app (discord)</span>
+    </div>
+    <a href="https://csyn.me" class="back-button">Back</a>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    document.body.style.opacity = '1';
+    });
+</script>
+</body>
+</html>
