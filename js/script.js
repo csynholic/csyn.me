@@ -3,9 +3,15 @@ function h(e) {
     window.removeEventListener("touchstart", h, null);
     window.removeEventListener("click", h, null);
 
-    const audio = new Audio("sounds/audio2.mp3");
+    const audioSources = [
+        "sounds/RUN UP.mp3",
+        "sounds/EVIL TWINS.mp3"
+    ];
+
+    const audio = new Audio();
     const visualizer = document.querySelector(".visualizer");
     const progress = document.querySelector(".progress");
+    const currentlyPlaying = document.querySelector(".currently-playing");
 
     const playButtons = document.querySelectorAll(".fa-light.fa-plus");
     const afterDiv = document.querySelector(".after");
@@ -61,32 +67,59 @@ function h(e) {
             if (isPlaying) {
                 audio.pause();
                 isPlaying = false;
-                updatePlayButtonState();
+                updatePlayButtonState(false);
             } else {
                 audio.play();
                 isPlaying = true;
-                updatePlayButtonState();
+                updatePlayButtonState(true);
             }
         });
     });
 
-    function updatePlayButtonState() {
+    function updatePlayButtonState(playing) {
         playButtons.forEach(btn => {
-            if (isPlaying) {
-                btn.classList.remove("fa-minus");
-                btn.classList.add("fa-plus");
-            } else {
+            if (playing) {
                 btn.classList.remove("fa-plus");
                 btn.classList.add("fa-minus");
+            } else {
+                btn.classList.remove("fa-minus");
+                btn.classList.add("fa-plus");
             }
         });
     }
 
     playButtons.forEach(button => {
-        button.classList.add("fa-minus");
+        button.classList.add("fa-plus");
     });
 
-    audio.play();
+    function changeAudioSource(index) {
+        playButtons.forEach(btn => {
+            btn.classList.remove("fa-minus");
+            btn.classList.add("fa-plus");
+        });
+
+        audio.src = audioSources[index];
+        const audioFileName = audioSources[index].split("/").pop();
+        currentlyPlaying.textContent = `Playing: ${audioFileName}`;
+        audio.play().catch(error => {
+            console.error('Failed to start audio playback:', error);
+        });
+
+        playButtons.forEach(btn => {
+            btn.classList.remove("fa-plus");
+            btn.classList.add("fa-minus");
+        });
+    }
+
+    let currentAudioIndex = 0;
+    changeAudioSource(currentAudioIndex);
+
+    function playNextAudio() {
+        currentAudioIndex = (currentAudioIndex + 1) % audioSources.length;
+        changeAudioSource(currentAudioIndex);
+    }
+
+    audio.addEventListener('ended', playNextAudio);
 
     document.addEventListener("keydown", function(event) {
         if (event.code === "Space") {
@@ -94,13 +127,17 @@ function h(e) {
             if (isPlaying) {
                 audio.pause();
                 isPlaying = false;
-                updatePlayButtonState();
+                updatePlayButtonState(false);
             } else {
                 audio.play();
                 isPlaying = true;
-                updatePlayButtonState();
+                updatePlayButtonState(true);
             }
         }
+    });
+
+    currentlyPlaying.addEventListener("click", function() {
+        playNextAudio();
     });
 }
 
