@@ -1,7 +1,7 @@
 function h(e) {
     e.preventDefault();
-    window.removeEventListener("touchstart", h, { passive: false });
-    window.removeEventListener("click", h, { passive: false });
+    window.removeEventListener("touchstart", h, null);
+    window.removeEventListener("click", h, null);
 
     const audio = new Audio("sounds/audio2.mp3");
     const visualizer = document.querySelector(".visualizer");
@@ -63,9 +63,7 @@ function h(e) {
                 isPlaying = false;
                 updatePlayButtonState();
             } else {
-                audio.play().catch(error => {
-                    console.error('Failed to start audio playback:', error);
-                });
+                audio.play();
                 isPlaying = true;
                 updatePlayButtonState();
             }
@@ -88,15 +86,7 @@ function h(e) {
         button.classList.add("fa-minus");
     });
 
-    // Start audio playback on first user interaction
-    const playAudio = () => {
-        audio.play().catch(error => {
-            console.error('Failed to start audio playback:', error);
-        });
-    };
-
-    window.addEventListener('touchstart', playAudio, { once: true, passive: false });
-    window.addEventListener('click', playAudio, { once: true, passive: false });
+    audio.play();
 
     document.addEventListener("keydown", function(event) {
         if (event.code === "Space") {
@@ -106,9 +96,7 @@ function h(e) {
                 isPlaying = false;
                 updatePlayButtonState();
             } else {
-                audio.play().catch(error => {
-                    console.error('Failed to start audio playback:', error);
-                });
+                audio.play();
                 isPlaying = true;
                 updatePlayButtonState();
             }
@@ -116,24 +104,24 @@ function h(e) {
     });
 }
 
-window.addEventListener("touchstart", h, { passive: false });
-window.addEventListener("click", h, { passive: false });
+window.addEventListener("touchstart", h);
+window.addEventListener("click", h);
 
 document.addEventListener("DOMContentLoaded", function() {
     const discordLink = document.querySelector('.discord-link');
 
     discordLink.addEventListener('click', function(event) {
         event.preventDefault();
-
+        
         const textToCopy = 'agh';
-
+        
         navigator.clipboard.writeText(textToCopy)
             .then(function() {
                 const notification = document.createElement('div');
                 notification.classList.add('notification');
                 notification.textContent = 'Copied!';
                 document.body.appendChild(notification);
-
+                
                 setTimeout(function() {
                     notification.remove();
                 }, 2000);
